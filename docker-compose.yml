@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  node1:
+    build:
+      context: ./node
+    ports:
+     - "3000"
+    environment:
+      - ISTANCE=1
+    networks:
+      - app-network
+  node2:
+    build:
+      context: ./node
+    ports:
+      - "3000"
+    environment:
+      - ISTANCE=2
+    networks:
+      - app-network
+  nginx:
+      build:
+        context: ./nginx
+      ports:
+        - "80:80"
+      networks:
+        - app-network
+networks:
+  app-network:
+    driver: bridge
