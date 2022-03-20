@@ -17,6 +17,9 @@ app.get("/",(req,res)=>{
             const nodo = process.env.ISTANCE;
             var info = JSON.parse(body);
             res.end("Ciao, sono il nodo "+nodo.toString()+"; le visite sono: "+info.count);
+            const rev = info._rev;
+            var count = info.cont +1;
+            console.log(rev+":"+count);
         }
     });
 });
