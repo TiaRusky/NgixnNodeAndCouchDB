@@ -25,6 +25,16 @@ services:
         - "80:80"
       networks:
         - app-network
+  couchdb:
+    build:
+      context: ./couchdb
+    ports:
+      - "5984"
+    networks:
+      - app-network
+    environment:
+      - COUCHDB_USER=mattia
+      - COUCHDB_PASSWORD=password
 networks:
   app-network:
     driver: bridge
